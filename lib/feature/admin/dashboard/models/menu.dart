@@ -10,20 +10,20 @@ class Menu {
 
   static List<Menu> getAllMenus() {
     return [
-      Menu(id: 1, name: "Home", nameKm: "Home", routeName: AppRouteName.home),
+      Menu(id: 1, name: "Home", nameKm: "ទំព័រដើម", routeName: AppRouteName.home),
       Menu(
         id: 2,
         name: "Category",
-        nameKm: "Category",
+        nameKm: "ប្រភេទ",
         routeName: AppRouteName.home,
       ),
       Menu(
         id: 3,
         name: "Article",
-        nameKm: "Category",
+        nameKm: "អត្ថបទ",
         routeName: AppRouteName.home,
       ),
-      Menu(id: 4, name: "Post", nameKm: "Post", routeName: AppRouteName.adminPosts),
+      Menu(id: 4, name: "Post", nameKm: "ប្រកាស", routeName: AppRouteName.adminPosts),
     ];
   }
 }

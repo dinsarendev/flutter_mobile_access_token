@@ -23,15 +23,21 @@ class HomeView extends GetView<HomeController> {
                 Get.toNamed(AppRouteName.adminDashboard);
               },
               leading: Icon(Icons.dashboard, color: Colors.white),
-              title: Text("dashboard", style: TextStyle(color: Colors.white)),
+              title: Text("dashboard".tr, style: TextStyle(color: Colors.white)),
               trailing: Icon(Icons.navigate_next, color: Colors.white),
             ),
           ],
         ),
       ),
       appBar: AppbarCustomWidget(
-        title: "Home Screen",
+        title: "home".tr,
         actions: [
+          IconButton(
+            onPressed: () {
+              controller.onChangeLanguage();
+            },
+            icon: Icon(Icons.language),
+          ),
           IconButton(
             onPressed: () {
               controller.onLogout();

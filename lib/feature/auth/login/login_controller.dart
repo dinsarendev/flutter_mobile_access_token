@@ -6,7 +6,7 @@ class LoginController extends GetxController {
   var usernameController = TextEditingController().obs;
   var passwordController = TextEditingController().obs;
   final AuthRepository authRepository;
-  final loading = true.obs;
+  final loading = false.obs;
   LoginController({required this.authRepository});
 
 

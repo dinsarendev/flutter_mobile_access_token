@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobile_access_token/constants/language_constants.dart';
 import 'package:flutter_mobile_access_token/feature/admin/dashboard/dashboard_controller.dart';
 import 'package:flutter_mobile_access_token/routes/app_route_name.dart';
 import 'package:flutter_mobile_access_token/widgets/appbar_custom_widget.dart';
@@ -11,7 +12,7 @@ class DashboardView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return Obx(() {
       return Scaffold(
-        appBar: AppbarCustomWidget(title: "Dashboard"),
+        appBar: AppbarCustomWidget(title: LanguageConstants.dashboard.tr),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: GridView.builder(
@@ -36,7 +37,7 @@ class DashboardView extends GetView<DashboardController> {
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      "${menu.name}",
+                     Get.locale?.languageCode== LanguageConstants.km ? "${menu.nameKm}" :  "${menu.name}",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
