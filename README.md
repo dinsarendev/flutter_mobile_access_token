@@ -1,0 +1,40 @@
+# flutter_mobile_access_token
+
+- Connection API using Http -> Change Dio
+- Dependency
+  - Http
+  - Getx
+  - GetStorage
+- Clean Architecture Getx Design
+  - 1. Getx Design
+    - Binding
+    - Controller
+    - View
+    - Dependency Inject
+      - Repository 
+      - Repository Impl
+    - Example 
+      - on Controller Call Repository  
+  - 2. Project Structure
+    - Core
+      - Model
+      - Api
+    - Binding
+      - All 
+    - Constants
+    - Data
+      - Local
+      - Network
+    - Utils
+    - Widgets-> Components
+    - Feature or Modules
+      - Auth
+        - Login
+          - Controller
+          - Binding
+          - View
+          - Model
+          - Repository
+          - User Case
+        - Register
+        - Forgot
