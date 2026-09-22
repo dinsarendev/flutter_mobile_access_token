@@ -82,4 +82,98 @@ class ApiServiceImpl implements ApiService {
     }
     return null;
   }
+
+  Future retryPost(String url, dynamic body) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.post(
+      Uri.parse(url),
+      headers: header,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    return null;
+  }
+
+  Future retryPut(String url, dynamic body) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.put(
+      Uri.parse(url),
+      headers: header,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    return null;
+  }
+
+  Future retryDelete(String url) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.delete(Uri.parse(url), headers: header);
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    return null;
+  }
+
+  @override
+  Future post(String url, {body}) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.post(
+      Uri.parse(url),
+      headers: header,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    if (response.statusCode == 401) {
+      // call to refresh token
+      if (await refresh() == true) {
+        // call
+        return retryPost(url, body);
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future delete(String url, {String? id}) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.delete(Uri.parse(url), headers: header);
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    if (response.statusCode == 401) {
+      // call to refresh token
+      if (await refresh() == true) {
+        // call
+        return retryDelete(url);
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future put(String url, {body}) async {
+    header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
+    var response = await httpClient.post(
+      Uri.parse(url),
+      headers: header,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    if (response.statusCode == 401) {
+      // call to refresh token
+      if (await refresh() == true) {
+        // call
+        return retryPut(url, body);
+      }
+    }
+    return null;
+  }
 }
