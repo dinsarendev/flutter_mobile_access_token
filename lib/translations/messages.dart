@@ -6,10 +6,12 @@ class Messages extends Translations {
     'en_US': {
       'dashboard': 'Dashboard',
       'home': 'Home',
+      'students': 'Students',
     },
     'km_KH': {
       'dashboard': 'ផ្ទាំងគ្រប់គ្រង',
       'home': 'ទំព័រដើម',
+      'students': 'សិស្ស',
     }
   };
 }

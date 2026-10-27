@@ -24,6 +24,7 @@ class Menu {
         routeName: AppRouteName.home,
       ),
       Menu(id: 4, name: "Post", nameKm: "ប្រកាស", routeName: AppRouteName.adminPosts),
+      Menu(id: 5, name: "Students", nameKm: "សិស្ស", routeName: AppRouteName.adminStudents),
     ];
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter_mobile_access_token/feature/admin/dashboard/dashboard_bi
 import 'package:flutter_mobile_access_token/feature/admin/dashboard/dashboard_view.dart';
 import 'package:flutter_mobile_access_token/feature/admin/post/post_binding.dart';
 import 'package:flutter_mobile_access_token/feature/admin/post/post_view.dart';
+import 'package:flutter_mobile_access_token/feature/admin/student/student_binding.dart';
+import 'package:flutter_mobile_access_token/feature/admin/student/student_view.dart';
 import 'package:flutter_mobile_access_token/routes/app_route_name.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
@@ -46,6 +48,12 @@ class AppRoute {
         name: AppRouteName.adminPosts,
         page: () => PostView(),
         binding: PostBinding(),
+        transition: Transition.cupertino,
+      ),
+      GetPage(
+        name: AppRouteName.adminStudents,
+        page: () => const StudentView(),
+        binding: StudentBinding(),
         transition: Transition.cupertino,
       ),
     ];

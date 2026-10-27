@@ -61,7 +61,7 @@ class ApiServiceImpl implements ApiService {
   Future get(String url) async {
     header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
     var response = await httpClient.get(Uri.parse(url), headers: header);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     if (response.statusCode == 401) {
@@ -77,7 +77,7 @@ class ApiServiceImpl implements ApiService {
   Future retryGet(String url) async {
     header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
     var response = await httpClient.get(Uri.parse(url), headers: header);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     return null;
@@ -90,7 +90,7 @@ class ApiServiceImpl implements ApiService {
       headers: header,
       body: body,
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     return null;
@@ -103,7 +103,7 @@ class ApiServiceImpl implements ApiService {
       headers: header,
       body: body,
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     return null;
@@ -112,7 +112,7 @@ class ApiServiceImpl implements ApiService {
   Future retryDelete(String url) async {
     header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
     var response = await httpClient.delete(Uri.parse(url), headers: header);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     return null;
@@ -126,7 +126,7 @@ class ApiServiceImpl implements ApiService {
       headers: header,
       body: body,
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     if (response.statusCode == 401) {
@@ -143,7 +143,7 @@ class ApiServiceImpl implements ApiService {
   Future delete(String url, {String? id}) async {
     header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
     var response = await httpClient.delete(Uri.parse(url), headers: header);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     if (response.statusCode == 401) {
@@ -159,12 +159,12 @@ class ApiServiceImpl implements ApiService {
   @override
   Future put(String url, {body}) async {
     header["Authorization"] = "Bearer ${AccessTokenStorage.getAccess()}";
-    var response = await httpClient.post(
+    var response = await httpClient.put(
       Uri.parse(url),
       headers: header,
       body: body,
     );
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return response.body;
     }
     if (response.statusCode == 401) {

@@ -26,6 +26,15 @@ class HomeView extends GetView<HomeController> {
               title: Text("dashboard".tr, style: TextStyle(color: Colors.white)),
               trailing: Icon(Icons.navigate_next, color: Colors.white),
             ),
+            ListTile(
+              onTap: (){
+                Navigator.pop(context);
+                Get.toNamed(AppRouteName.adminStudents);
+              },
+              leading: Icon(Icons.school, color: Colors.white),
+              title: Text("students".tr, style: TextStyle(color: Colors.white)),
+              trailing: Icon(Icons.navigate_next, color: Colors.white),
+            ),
           ],
         ),
       ),
